@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Campus Finder</title>
+    <script>
+        async function performSearch() {
+            const searchQuery = document.getElementById('search-input').value;
+            const response = await fetch(`/api/search?query=${encodeURIComponent(searchQuery)}`);
+            const results = await response.json();
+            displayResults(results);
+        }
+
+        function displayResults(results) {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<p>No results found.</p>';
+                return;
+            }
+            results.forEach(result => {
+                const resultItem = document.createElement('div');
+                resultItem.innerText = result.name; // Adjust according to your data structure
+                resultsContainer.appendChild(resultItem);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Search Your Campus</h1>
+    <input type="text" id="search-input" placeholder="Search..." />
+    <button onclick="performSearch()">Search</button>
+    <div id='results'></div>
+</body>
+</html>
