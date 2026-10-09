@@ -8,7 +8,7 @@ Campus Finder is a simple web application developed using Python and HTML. It de
 
 * Python
 * HTML
-* SQLite (if used by the application)
+* SQLite 
 
 ## Project Structure
 
